@@ -114,10 +114,10 @@ export const StyledEditor = styled("div")<{
   
   /* Avoid math nodes increasing inline line height */
   .math-node {
-    line-height: 0px;
+    line-height: 1.2em;
   }
   math-display.math-node {
-    margin: 16px 16px;
+    margin: 16px 0px;
   }
 
   /* Override weird selection style from prosemirror-math */
@@ -356,7 +356,6 @@ export const StyledEditor = styled("div")<{
   }
 
   p {
-    overflow-wrap: break-word;
     text-align: justify;
     margin: 0;
 
