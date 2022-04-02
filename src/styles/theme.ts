@@ -57,13 +57,6 @@ export const base = {
   blockToolbarSelectedBackground: colors.grey,
   blockToolbarHoverBackground: colors.greyLight,
   blockToolbarDivider: colors.grey,
-
-  noticeInfoBackground: "#F5BE31",
-  noticeInfoText: colors.almostBlack,
-  noticeTipBackground: "#9E5CF7",
-  noticeTipText: colors.white,
-  noticeWarningBackground: "#FF5C80",
-  noticeWarningText: colors.white,
 };
 
 export const light = {

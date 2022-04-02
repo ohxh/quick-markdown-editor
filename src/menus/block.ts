@@ -128,29 +128,5 @@ export default function blockMenuItems(
       shortcut: `${mod} k`,
       keywords: "link url uri href",
     },
-    {
-      name: "separator",
-    },
-    {
-      name: "container_notice",
-      title: dictionary.infoNotice,
-      icon: InfoIcon,
-      keywords: "container_notice card information",
-      attrs: { style: "info" },
-    },
-    {
-      name: "container_notice",
-      title: dictionary.warningNotice,
-      icon: WarningIcon,
-      keywords: "container_notice card error",
-      attrs: { style: "warning" },
-    },
-    {
-      name: "container_notice",
-      title: dictionary.tipNotice,
-      icon: StarredIcon,
-      keywords: "container_notice card suggestion",
-      attrs: { style: "tip" },
-    },
   ];
 }

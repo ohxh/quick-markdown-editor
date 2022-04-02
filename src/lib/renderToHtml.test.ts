@@ -35,38 +35,6 @@ test("renders checkbox list", () => {
   ).toMatchSnapshot();
 });
 
-test("renders bullet list", () => {
-  expect(
-    renderToHtml(`- item one
-- item two
-  - nested item`)
-  ).toMatchSnapshot();
-});
-
-test("renders info notice", () => {
-  expect(
-    renderToHtml(`:::info
-content of notice
-:::`)
-  ).toMatchSnapshot();
-});
-
-test("renders warning notice", () => {
-  expect(
-    renderToHtml(`:::warning
-content of notice
-:::`)
-  ).toMatchSnapshot();
-});
-
-test("renders tip notice", () => {
-  expect(
-    renderToHtml(`:::tip
-content of notice
-:::`)
-  ).toMatchSnapshot();
-});
-
 test("renders headings", () => {
   expect(
     renderToHtml(`# Heading 1

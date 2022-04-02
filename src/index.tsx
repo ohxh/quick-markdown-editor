@@ -40,7 +40,6 @@ import BulletList from "./nodes/BulletList";
 import CodeBlock from "./nodes/CodeBlock";
 import CodeFence from "./nodes/CodeFence";
 import CheckboxList from "./nodes/CheckboxList";
-import Emoji from "./nodes/Emoji";
 import CheckboxItem from "./nodes/CheckboxItem";
 import Embed from "./nodes/Embed";
 import HardBreak from "./nodes/HardBreak";
@@ -50,7 +49,6 @@ import Image from "./nodes/Image";
 import ListItem from "./nodes/ListItem";
 import Math from "./nodes/Math";
 import MathDisplay from "./nodes/MathDisplay";
-import Notice from "./nodes/Notice";
 import OrderedList from "./nodes/OrderedList";
 import Paragraph from "./nodes/Paragraph";
 import Table from "./nodes/Table";
@@ -79,6 +77,7 @@ import SmartText from "./plugins/SmartText";
 import TrailingNode from "./plugins/TrailingNode";
 import PasteHandler from "./plugins/PasteHandler";
 import { PluginSimple } from "markdown-it";
+import Emoji from "./plugins/Emoji";
 
 export { schema, parser, serializer, renderToHtml } from "./server";
 
@@ -113,7 +112,6 @@ export type Props = {
     | "hr"
     | "image"
     | "list_item"
-    | "container_notice"
     | "ordered_list"
     | "paragraph"
     | "table"
@@ -327,16 +325,13 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
             dictionary,
             onShowToast: this.props.onShowToast,
           }),
-          new Emoji(),
           new Text(),
           new CheckboxList(),
           new CheckboxItem(),
           new BulletList(),
           new Embed({ embeds: this.props.embeds }),
           new ListItem(),
-          new Notice({
-            dictionary,
-          }),
+
           new Heading({
             dictionary,
             onShowToast: this.props.onShowToast,
@@ -391,6 +386,7 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
             onOpen: this.handleOpenBlockMenu,
             onClose: this.handleCloseBlockMenu,
           }),
+          new Emoji(),
           new EmojiTrigger({
             onOpen: (search: string) => {
               this.setState({ emojiMenuOpen: true, blockMenuSearch: search });

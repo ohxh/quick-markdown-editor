@@ -5,9 +5,7 @@ import checkboxRule from "../rules/checkboxes";
 import embedsRule from "../rules/embeds";
 import breakRule from "../rules/breaks";
 import tablesRule from "../rules/tables";
-import noticesRule from "../rules/notices";
 import underlinesRule from "../rules/underlines";
-import emojiRule from "../rules/emoji";
 
 const defaultRules = [
   embedsRule,
@@ -17,8 +15,6 @@ const defaultRules = [
   markRule({ delim: "!!", mark: "placeholder" }),
   underlinesRule,
   tablesRule,
-  noticesRule,
-  emojiRule,
 ];
 
 export default function renderToHtml(
