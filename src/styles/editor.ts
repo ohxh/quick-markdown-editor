@@ -214,12 +214,12 @@ export const StyledEditor = styled("div")<{
     margin-${(props) => (props.rtl ? "right" : "left")}: -1em;
   }
 
-  .heading-anchor,
-  .heading-fold {
+  .heading-anchor {
     display: inline-block;
     color: ${(props) => props.theme.text};
     opacity: .75;
     cursor: pointer;
+    user-select: none;
     background: none;
     outline: none;
     border: 0;
@@ -248,18 +248,6 @@ export const StyledEditor = styled("div")<{
     top: -2px;
     width: 26px;
     height: 24px;
-
-    &.collapsed {
-      opacity: 1;
-    }
-
-    &.collapsed .heading-anchor {
-      opacity: 0;
-    }
-
-    &.collapsed .heading-fold {
-      opacity: 1;
-    }
   }
 
   h1,
@@ -275,18 +263,6 @@ export const StyledEditor = styled("div")<{
       .heading-anchor:hover {
         opacity: 1 !important;
       }
-    }
-  }
-
-  .heading-fold {
-    display: inline-block;
-    transform-origin: center;
-    padding: 0;
-
-    &.collapsed {
-      transform: rotate(${(props) => (props.rtl ? "90deg" : "-90deg")});
-      transition-delay: 0.1s;
-      opacity: 1;
     }
   }
 
@@ -976,10 +952,6 @@ export const StyledEditor = styled("div")<{
     width: 20px;
     border-top: 1px solid ${(props) => props.theme.cursor};
     animation: ProseMirror-cursor-blink 1.1s steps(2, start) infinite;
-  }
-
-  .folded-content {
-    display: none;
   }
 
   @keyframes ProseMirror-cursor-blink {
