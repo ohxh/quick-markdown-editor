@@ -95,6 +95,10 @@ export const StyledEditor = styled("div")<{
     outline: 2px solid
       ${(props) => (props.readOnly ? "transparent" : props.theme.selected)};
   }
+
+  .ProseMirror > *:not(:last-child) {
+    margin-bottom: 10px;
+  }
   
   math-display.ProseMirror-selectednode, math-inline.ProseMirror-selectednode  {
     outline: none;
@@ -116,7 +120,8 @@ export const StyledEditor = styled("div")<{
   .math-node {
     line-height: 1.2em;
   }
-  math-display.math-node {
+
+  .ProseMirror > math-display.math-node {
     margin: 16px 0px;
   }
 

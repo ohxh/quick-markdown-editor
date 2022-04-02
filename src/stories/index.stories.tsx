@@ -21,6 +21,11 @@ export default {
     disableExtensions: { control: "array" },
   },
   args: {
+    style: {
+      maxWidth: "44em",
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
     disableExtensions: [],
   },
 } as Meta;
@@ -126,27 +131,6 @@ Code.args = {
   <p class="content">Simple code blocks are supported</html>
 </html>
 \`\`\`
-`,
-};
-
-export const Notices = Template.bind({});
-Notices.args = {
-  defaultValue: `# Notices
-
-There are three types of editable notice blocks that can be used to callout information:
-
-\\
-:::info
-Informational
-:::
-
-:::tip
-Tip
-:::
-
-:::warning
-Warning
-:::
 `,
 };
 
