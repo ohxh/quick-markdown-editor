@@ -3,6 +3,7 @@ import {
   REGEX_BLOCK_MATH_DOLLARS,
   insertMathCmd,
 } from "@benrbray/prosemirror-math";
+import { NodeSelection, Selection, TextSelection } from "prosemirror-state";
 import Node from "./Node";
 
 export default class MathDisplay extends Node {
@@ -31,7 +32,13 @@ export default class MathDisplay extends Node {
 
   commands({ type }) {
     return () => (state, dispatch) => {
-      dispatch(state.tr.replaceSelectionWith(type.create()).scrollIntoView());
+      const { $from } = state.selection;
+      if (dispatch) {
+        const mathNode = type.create();
+        let tr = state.tr.replaceSelectionWith(mathNode);
+        tr = tr.setSelection(Selection.near(tr.doc.resolve($from.pos - 1)));
+        dispatch(tr);
+      }
       return true;
     };
   }
