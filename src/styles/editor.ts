@@ -10,7 +10,7 @@ export const StyledEditor = styled("div")<{
   font-family: ${(props) => props.theme.fontFamily};
   font-weight: ${(props) => props.theme.fontWeight};
   font-size: 1em;
-  line-height: 1.7em;
+  line-height: 1.5em;
   width: 100%;
 
   .ProseMirror {
@@ -576,7 +576,6 @@ export const StyledEditor = styled("div")<{
     -ms-hyphens: none;
     hyphens: none;
     color: ${(props) => props.theme.code};
-    margin: 0;
 
     code {
       font-size: 13px;
