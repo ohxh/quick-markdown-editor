@@ -48,6 +48,8 @@ export default class MathDisplay extends Node {
   parseMarkdown() {
     return {
       node: "math_display",
+      block: "math_display",
+      noCloseToken: "math_display",
     };
   }
 }

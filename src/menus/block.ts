@@ -97,7 +97,7 @@ export default function blockMenuItems(
       keywords: "script",
     },
     {
-      name: "math_inline",
+      name: "math_display",
       title: dictionary.math,
       icon: MathIcon,
     },

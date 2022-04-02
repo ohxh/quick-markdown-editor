@@ -12,6 +12,7 @@ import {
   REGEX_INLINE_MATH_DOLLARS,
 } from "@benrbray/prosemirror-math";
 import Node from "./Node";
+import mathRulePlugin from "../lib/markdown/math";
 import "katex/dist/katex.min.css";
 import "@benrbray/prosemirror-math/style/math.css";
 
@@ -68,6 +69,10 @@ export default class Math extends Node {
     return [mathPlugin];
   }
 
+  get rulePlugins() {
+    return [mathRulePlugin];
+  }
+
   toMarkdown(state, node) {
     state.write("$");
     state.renderInline(node);
@@ -77,6 +82,8 @@ export default class Math extends Node {
   parseMarkdown() {
     return {
       node: "math_inline",
+      block: "math_inline",
+      noCloseToken: "math_inline",
     };
   }
 }
