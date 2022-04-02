@@ -309,56 +309,6 @@ export const StyledEditor = styled("div")<{
     opacity: 1;
   }
 
-  .notice-block {
-    display: flex;
-    align-items: center;
-    background: ${(props) => props.theme.noticeInfoBackground};
-    color: ${(props) => props.theme.noticeInfoText};
-    border-radius: 4px;
-    padding: 8px 16px;
-    margin: 8px 0;
-
-    a {
-      color: ${(props) => props.theme.noticeInfoText};
-    }
-
-    a:not(.heading-name) {
-      text-decoration: underline;
-    }
-  }
-
-  .notice-block .content {
-    flex-grow: 1;
-    min-width: 0;
-  }
-
-  .notice-block .icon {
-    width: 24px;
-    height: 24px;
-    align-self: flex-start;
-    margin-${(props) => (props.rtl ? "left" : "right")}: 4px;
-    position: relative;
-    top: 1px;
-  }
-
-  .notice-block.tip {
-    background: ${(props) => props.theme.noticeTipBackground};
-    color: ${(props) => props.theme.noticeTipText};
-
-    a {
-      color: ${(props) => props.theme.noticeTipText};
-    }
-  }
-
-  .notice-block.warning {
-    background: ${(props) => props.theme.noticeWarningBackground};
-    color: ${(props) => props.theme.noticeWarningText};
-
-    a {
-      color: ${(props) => props.theme.noticeWarningText};
-    }
-  }
-
   blockquote {
     margin: 0;
     padding-left: 1.5em;
@@ -556,8 +506,7 @@ export const StyledEditor = styled("div")<{
     }
   }
 
-  .code-block,
-  .notice-block {
+  .code-block {
     position: relative;
 
     select,
@@ -578,13 +527,6 @@ export const StyledEditor = styled("div")<{
       select,
       button {
         right: 4px;
-      }
-    }
-
-    &.notice-block {
-      select,
-      button {
-        ${(props) => (props.rtl ? "left" : "right")}: 4px;
       }
     }
 
@@ -935,25 +877,23 @@ export const StyledEditor = styled("div")<{
     opacity: 0;
     pointer-events: none;
     display: ${(props) => (props.readOnly ? "none" : "inline")};
-    width: 24px;
-    height: 24px;
-    color: ${(props) => props.theme.textSecondary};
+    width: 18px;
+    height: 18px;
+    color: ${(props) => props.theme.greyMid};
     background: none;
     position: absolute;
     transition: color 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      transform 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
       opacity 150ms ease-in-out;
     outline: none;
     border: 0;
     padding: 0;
     margin-top: 1px;
-    margin-${(props) => (props.rtl ? "right" : "left")}: -24px;
+    margin-${(props) => (props.rtl ? "right" : "left")}: -28px;
 
     &:hover,
     &:focus {
       cursor: pointer;
-      transform: scale(1.2);
-      color: ${(props) => props.theme.text};
+      color: ${(props) => props.theme.textSecondary};
     }
   }
 
