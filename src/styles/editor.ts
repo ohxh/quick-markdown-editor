@@ -99,6 +99,15 @@ export const StyledEditor = styled("div")<{
   math-display.ProseMirror-selectednode, math-inline.ProseMirror-selectednode  {
     outline: none;
   }
+  .math-src ProseMirror {
+    del {
+      text-decoration: none;
+    }
+    strong {
+      font-weight: normal;
+    }
+  }
+
   /* Make sure li selections wrap around markers */
 
   li.ProseMirror-selectednode {
