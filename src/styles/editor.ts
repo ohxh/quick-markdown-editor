@@ -111,6 +111,14 @@ export const StyledEditor = styled("div")<{
   .math-src make {
     background: none;
   }
+  
+  /* Avoid math nodes increasing inline line height */
+  .math-node {
+    line-height: 0px;
+  }
+  math-display.math-node {
+    margin: 16px 16px;
+  }
 
   /* Override weird selection style from prosemirror-math */
 
@@ -348,6 +356,8 @@ export const StyledEditor = styled("div")<{
   }
 
   p {
+    overflow-wrap: break-word;
+    text-align: justify;
     margin: 0;
 
     span:first-child + br:last-child {
@@ -554,7 +564,7 @@ export const StyledEditor = styled("div")<{
     display: block;
     overflow-x: auto;
     padding: 0.75em 1em;
-    line-height: 1.4em;
+    line-height: 1.2em;
     position: relative;
     background: ${(props) => props.theme.codeBackground};
     border-radius: 4px;
