@@ -196,12 +196,4 @@ export default function(md) {
   md.block.ruler.after("blockquote", "math_display", math_block, {
     alt: ["paragraph", "reference", "blockquote", "list"],
   });
-
-  Object.keys(mapping).forEach(function(key) {
-    const before = options["before" + mapping[key]];
-    const after = options["after" + mapping[key]];
-    md.renderer.rules[key] = function(tokens, idx) {
-      return before + escapeHtml(tokens[idx].content) + after;
-    };
-  });
 }
