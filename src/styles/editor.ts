@@ -112,6 +112,16 @@ export const StyledEditor = styled("div")<{
     background: none;
   }
 
+  /* Override weird selection style from prosemirror-math */
+
+  *:focus ::selection {
+    background-color: ${(props) => props.theme.selectionFocused} !important;
+  }
+
+  * ::selection {
+    background-color: ${(props) => props.theme.selectionUnfocused} !important;
+  }
+
   /* Make sure li selections wrap around markers */
 
   li.ProseMirror-selectednode {

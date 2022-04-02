@@ -27,6 +27,8 @@ export const base = {
   textLight: colors.white,
   textHighlight: "#b3e7ff",
   textHighlightForeground: colors.black,
+  selectionUnfocused: "#DCDCDC",
+  selectionFocused: "#ACCEF7",
   selected: colors.primary,
   codeComment: "#6a737d",
   codePunctuation: "#5e6687",
