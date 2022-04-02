@@ -30,7 +30,10 @@ export default class MathDisplay extends Node {
   }
 
   commands({ type }) {
-    return () => insertMathCmd(type);
+    return () => (state, dispatch) => {
+      dispatch(state.tr.replaceSelectionWith(type.create()).scrollIntoView());
+      return true;
+    };
   }
 
   inputRules({ type }) {
