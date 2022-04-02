@@ -95,7 +95,10 @@ export const StyledEditor = styled("div")<{
     outline: 2px solid
       ${(props) => (props.readOnly ? "transparent" : props.theme.selected)};
   }
-
+  
+  math-display.ProseMirror-selectednode, math-inline.ProseMirror-selectednode  {
+    outline: none;
+  }
   /* Make sure li selections wrap around markers */
 
   li.ProseMirror-selectednode {

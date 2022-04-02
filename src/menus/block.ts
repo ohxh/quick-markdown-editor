@@ -6,6 +6,7 @@ import {
   Heading2Icon,
   Heading3Icon,
   HorizontalRuleIcon,
+  MathIcon,
   OrderedListIcon,
   PageBreakIcon,
   TableIcon,
@@ -94,6 +95,11 @@ export default function blockMenuItems(
       icon: CodeIcon,
       shortcut: "^ ⇧ \\",
       keywords: "script",
+    },
+    {
+      name: "math_inline",
+      title: dictionary.math,
+      icon: MathIcon,
     },
     {
       name: "hr",
