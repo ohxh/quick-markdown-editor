@@ -576,10 +576,10 @@ export const Wrapper = styled.div<{
   ${props => props.top !== undefined && `top: ${props.top}px`};
   ${props => props.bottom !== undefined && `bottom: ${props.bottom}px`};
   left: ${props => props.left}px;
+  border: 1px solid ${props => props.theme.blockToolbarDivider};
   background-color: ${props => props.theme.blockToolbarBackground};
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0.08) 0px 4px 8px, rgba(0, 0, 0, 0.08) 0px 2px 4px;
+  border-radius: 5px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   opacity: 0;
   transform: scale(0.95);
   transition: opacity 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
@@ -589,8 +589,8 @@ export const Wrapper = styled.div<{
   box-sizing: border-box;
   pointer-events: none;
   white-space: nowrap;
-  width: 300px;
-  max-height: 224px;
+  width: 360px;
+  max-height: 284px;
   overflow: hidden;
   overflow-y: auto;
 
