@@ -52,9 +52,9 @@ export default class Emoji extends Node {
     };
   }
 
-  get rulePlugins() {
-    return [emojiRule];
-  }
+  // get rulePlugins() {
+  //   return [emojiRule];
+  // }
 
   commands({ type }) {
     return attrs => (state, dispatch) => {
@@ -62,47 +62,49 @@ export default class Emoji extends Node {
       const position = selection.$cursor
         ? selection.$cursor.pos
         : selection.$to.pos;
-      const node = type.create(attrs);
-      const transaction = state.tr.insert(position, node);
+      const transaction = state.tr.insertText(
+        nameToEmoji[attrs.markup],
+        position
+      );
       dispatch(transaction);
       return true;
     };
   }
 
-  inputRules({ type }) {
-    return [
-      new InputRule(/^\:([a-zA-Z0-9_+-]+)\:$/, (state, match, start, end) => {
-        const [okay, markup] = match;
-        const { tr } = state;
-        if (okay) {
-          tr.replaceWith(
-            start - 1,
-            end,
-            type.create({
-              "data-name": markup,
-              markup,
-            })
-          );
-        }
+  // inputRules({ type }) {
+  //   return [
+  //     new InputRule(/^\:([a-zA-Z0-9_+-]+)\:$/, (state, match, start, end) => {
+  //       const [okay, markup] = match;
+  //       const { tr } = state;
+  //       if (okay) {
+  //         tr.replaceWith(
+  //           start - 1,
+  //           end,
+  //           type.create({
+  //             "data-name": markup,
+  //             markup,
+  //           })
+  //         );
+  //       }
 
-        return tr;
-      }),
-    ];
-  }
+  //       return tr;
+  //     }),
+  //   ];
+  // }
 
-  toMarkdown(state, node) {
-    const name = node.attrs["data-name"];
-    if (name) {
-      state.write(`:${name}:`);
-    }
-  }
+  // toMarkdown(state, node) {
+  //   const name = node.attrs["data-name"];
+  //   if (name) {
+  //     state.write(`:${name}:`);
+  //   }
+  // }
 
-  parseMarkdown() {
-    return {
-      node: "emoji",
-      getAttrs: tok => {
-        return { "data-name": tok.markup.trim() };
-      },
-    };
-  }
+  // parseMarkdown() {
+  //   return {
+  //     node: "emoji",
+  //     getAttrs: tok => {
+  //       return { "data-name": tok.markup.trim() };
+  //     },
+  //   };
+  // }
 }
