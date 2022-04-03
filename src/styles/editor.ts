@@ -525,6 +525,22 @@ export const StyledEditor = styled("div")<{
     }
   }
 
+  a.link-atom {
+    text-decoration: underline;
+
+    ::before, ::after {
+      text-decoration: none;
+      color: ${(props) => props.theme.greyMid};
+    }
+    ::before {
+      content: '[['
+    }
+    ::after {
+      content: ']]'
+    }
+  }
+  
+
   .code-block {
     position: relative;
 

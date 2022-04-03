@@ -67,7 +67,7 @@ export const light = {
   cursor: colors.black,
   divider: colors.greyMid,
 
-  toolbarBackground: colors.lightBlack,
+  toolbarBackground: colors.black,
   toolbarHoverBackground: colors.black,
   toolbarInput: colors.white10,
   toolbarItem: colors.white,
