@@ -1,10 +1,8 @@
-import {
-  makeBlockMathInputRule,
-  REGEX_BLOCK_MATH_DOLLARS,
-  insertMathCmd,
-} from "@benrbray/prosemirror-math";
-import { NodeSelection, Selection, TextSelection } from "prosemirror-state";
+import { makeBlockMathInputRule } from "@benrbray/prosemirror-math";
+import { Selection } from "prosemirror-state";
 import Node from "./Node";
+
+const REGEX_BLOCK_MATH_DOLLARS = /^\$\$\s+$/;
 
 export default class MathDisplay extends Node {
   get name() {
