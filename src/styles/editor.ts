@@ -461,6 +461,10 @@ export const StyledEditor = styled("div")<{
     ${(props) => (props.rtl ? "right" : "left")}: 0;
   }
 
+  ul.checkbox_list li span {
+    max-height: 24px;
+  }
+
   ul.checkbox_list li input {
     cursor: pointer;
     pointer-events: ${(props) =>
@@ -502,6 +506,7 @@ export const StyledEditor = styled("div")<{
   }
 
   code {
+    line-height: 1.2em;
     border-radius: 4px;
     border: 1px solid ${(props) => props.theme.codeBorder};
     background: ${(props) => props.theme.codeBackground};
