@@ -91,10 +91,6 @@ test("renders italic marks", () => {
   expect(renderToHtml(`this is _also italic_ text`)).toMatchSnapshot();
 });
 
-test("renders template placeholder marks", () => {
-  expect(renderToHtml(`this is !!a placeholder!!`)).toMatchSnapshot();
-});
-
 test("renders underline marks", () => {
   expect(renderToHtml(`this is __underlined__ text`)).toMatchSnapshot();
 });

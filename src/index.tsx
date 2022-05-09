@@ -63,7 +63,6 @@ import Highlight from "./marks/Highlight";
 import Italic from "./marks/Italic";
 import Link from "./marks/Link";
 import Strikethrough from "./marks/Strikethrough";
-import TemplatePlaceholder from "./marks/Placeholder";
 import Underline from "./marks/Underline";
 
 // plugins
@@ -127,7 +126,6 @@ export type Props = {
   dark?: boolean;
   dir?: string;
   theme?: typeof theme;
-  template?: boolean;
   headingsOffset?: number;
   maxLength?: number;
   scrollTo?: string;
@@ -360,7 +358,6 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
           new Italic(),
           new Math(),
           new MathDisplay(),
-          new TemplatePlaceholder(),
           new Underline(),
           new Link({
             onKeyboardShortcut: this.handleOpenLinkMenu,
@@ -768,7 +765,6 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
                   dictionary={dictionary}
                   commands={this.commands}
                   rtl={isRTL}
-                  isTemplate={this.props.template === true}
                   onOpen={this.handleOpenSelectionMenu}
                   onClose={this.handleCloseSelectionMenu}
                   onSearchLink={this.props.onSearchLink}

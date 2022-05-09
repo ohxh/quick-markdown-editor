@@ -347,19 +347,6 @@ export const StyledEditor = styled("div")<{
     font-weight: 600;
   }
 
-  .template-placeholder {
-    color: ${(props) => props.theme.placeholder};
-    border-bottom: 1px dotted ${(props) => props.theme.placeholder};
-    border-radius: 2px;
-    cursor: text;
-
-    &:hover {
-      border-bottom: 1px dotted
-        ${(props) =>
-          props.readOnly ? props.theme.placeholder : props.theme.textSecondary};
-    }
-  }
-
   p {
     text-align: justify;
     margin: 0;

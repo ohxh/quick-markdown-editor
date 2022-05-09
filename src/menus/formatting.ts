@@ -22,7 +22,6 @@ import baseDictionary from "../dictionary";
 
 export default function formattingMenuItems(
   state: EditorState,
-  isTemplate: boolean,
   dictionary: typeof baseDictionary
 ): MenuItem[] {
   const { schema } = state;
@@ -31,17 +30,6 @@ export default function formattingMenuItems(
   const allowBlocks = !isTable && !isList;
 
   return [
-    {
-      name: "placeholder",
-      tooltip: dictionary.placeholder,
-      icon: InputIcon,
-      active: isMarkActive(schema.marks.placeholder),
-      visible: isTemplate,
-    },
-    {
-      name: "separator",
-      visible: isTemplate,
-    },
     {
       name: "strong",
       tooltip: dictionary.strong,
@@ -59,7 +47,6 @@ export default function formattingMenuItems(
       tooltip: dictionary.mark,
       icon: HighlightIcon,
       active: isMarkActive(schema.marks.highlight),
-      visible: !isTemplate,
     },
     {
       name: "code_inline",

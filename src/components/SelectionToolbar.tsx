@@ -26,7 +26,6 @@ type Props = {
   dictionary: typeof baseDictionary;
   tooltip: typeof React.Component | React.FC<any>;
   rtl: boolean;
-  isTemplate: boolean;
   commands: Record<string, any>;
   onOpen: () => void;
   onClose: () => void;
@@ -160,7 +159,7 @@ export default class SelectionToolbar extends React.Component<Props> {
   };
 
   render() {
-    const { dictionary, onCreateLink, isTemplate, rtl, ...rest } = this.props;
+    const { dictionary, onCreateLink, rtl, ...rest } = this.props;
     const { view } = rest;
     const { state } = view;
     const { selection }: { selection: any } = state;
@@ -193,7 +192,7 @@ export default class SelectionToolbar extends React.Component<Props> {
     } else if (isDividerSelection) {
       items = getDividerMenuItems(state, dictionary);
     } else {
-      items = getFormattingMenuItems(state, isTemplate, dictionary);
+      items = getFormattingMenuItems(state, dictionary);
       isTextSelection = true;
     }
 

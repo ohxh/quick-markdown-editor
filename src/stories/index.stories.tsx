@@ -48,17 +48,6 @@ Emoji.args = {
 `,
 };
 
-export const TemplateDoc = Template.bind({});
-TemplateDoc.args = {
-  template: true,
-  defaultValue: `# Template
-
-This document acts as a "template document", it's possible to insert placeholder marks that can be filled in later by others in a non-template document.
-
-\\
-!!This is a template placeholder!!`,
-};
-
 export const Headings = Template.bind({});
 Headings.args = {
   defaultValue: `# Heading 1
