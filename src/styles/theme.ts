@@ -64,7 +64,7 @@ export const light = {
   background: colors.white,
   text: colors.almostBlack,
   code: colors.lightBlack,
-  cursor: colors.black,
+  cursor: colors.primary,
   divider: colors.greyMid,
 
   toolbarBackground: colors.black,
