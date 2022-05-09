@@ -43,7 +43,6 @@ export const base = {
   noResults: "No results",
   openLink: "Open link",
   orderedList: "Ordered list",
-  pageBreak: "Page break",
   pasteLink: "Paste a link…",
   pasteLinkWithTitle: (title: string): string => `Paste a ${title} link…`,
   placeholder: "Placeholder",

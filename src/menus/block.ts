@@ -8,13 +8,9 @@ import {
   HorizontalRuleIcon,
   MathIcon,
   OrderedListIcon,
-  PageBreakIcon,
   TableIcon,
   TodoListIcon,
   ImageIcon,
-  StarredIcon,
-  WarningIcon,
-  InfoIcon,
   LinkIcon,
 } from "outline-icons";
 import { MenuItem } from "../types";
@@ -107,13 +103,6 @@ export default function blockMenuItems(
       icon: HorizontalRuleIcon,
       shortcut: `${mod} _`,
       keywords: "horizontal rule break line",
-    },
-    {
-      name: "hr",
-      title: dictionary.pageBreak,
-      icon: PageBreakIcon,
-      keywords: "page print break line",
-      attrs: { markup: "***" },
     },
     {
       name: "image",
