@@ -1,4 +1,4 @@
-import { Plugin } from "prosemirror-state";
+import { Plugin, TextSelection } from "prosemirror-state";
 import { isInTable } from "prosemirror-tables";
 import { toggleMark } from "prosemirror-commands";
 import Extension from "../lib/Extension";
@@ -18,7 +18,7 @@ function normalizePastedMarkdown(text: string): string {
   const CHECKBOX_REGEX = /^\s?(\[(X|\s|_|-)\]\s(.*)?)/gim;
 
   while (text.match(CHECKBOX_REGEX)) {
-    text = text.replace(CHECKBOX_REGEX, match => `- ${match.trim()}`);
+    text = text.replace(CHECKBOX_REGEX, (match) => `- ${match.trim()}`);
   }
 
   return text;
@@ -88,7 +88,6 @@ export default class PasteHandler extends Extension {
             // as plain text, ignore all formatting and HTML content.
             if (selectionIsInCode(view.state)) {
               event.preventDefault();
-
               view.dispatch(view.state.tr.insertText(text));
               return true;
             }
@@ -101,17 +100,42 @@ export default class PasteHandler extends Extension {
 
             if (pasteCodeLanguage && pasteCodeLanguage !== "markdown") {
               event.preventDefault();
-              view.dispatch(
-                view.state.tr
-                  .replaceSelectionWith(
-                    view.state.schema.nodes.code_fence.create({
-                      language: Object.keys(LANGUAGES).includes(vscodeMeta.mode)
-                        ? vscodeMeta.mode
-                        : null,
-                    })
-                  )
-                  .insertText(text)
+              let tr = view.state.tr.replaceSelectionWith(
+                view.state.schema.nodes.code_fence.create({
+                  language: Object.keys(LANGUAGES).includes(vscodeMeta.mode)
+                    ? vscodeMeta.mode
+                    : null,
+                })
               );
+
+              // Position inside the code fence seems to behave differently at
+              // the end of the document. Not sure why, but this fixes it
+              // manually
+
+              const isLastLine =
+                TextSelection.atEnd(tr.doc).to === tr.selection.$to.after() - 1;
+              tr = tr
+                .setSelection(
+                  TextSelection.near(
+                    tr.doc.resolve(
+                      tr.selection.$from.before() - (isLastLine ? 0 : 1)
+                    )
+                  )
+                )
+                .insertText(text);
+
+              // Create paragraph and move cursor out of code block
+              tr = tr.insert(
+                tr.selection.$to.after(),
+                view.state.schema.nodes.paragraph.create()
+              );
+              tr = tr.setSelection(
+                TextSelection.near(
+                  tr.doc.resolve(tr.selection.$from.after() + 1)
+                )
+              );
+
+              view.dispatch(tr);
               return true;
             }
 
