@@ -363,6 +363,10 @@ export const StyledEditor = styled("div")<{
     border-bottom: 1px solid ${(props) => props.theme.placeholder}
   }
 
+  .math-src a {
+    color: inherit;
+  }
+
   a:hover {
     text-decoration: ${(props) => (props.readOnly ? "underline" : "none")};
   }

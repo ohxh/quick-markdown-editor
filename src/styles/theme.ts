@@ -21,7 +21,7 @@ export const base = {
     "'SFMono-Regular',Consolas,'Liberation Mono', Menlo, Courier,monospace",
   fontWeight: 400,
   zIndex: 100,
-  link: colors.primary,
+  link: colors.almostBlack,
   placeholder: "#B1BECC",
   textSecondary: "#4E5C6E",
   textLight: colors.white,
