@@ -359,6 +359,8 @@ export const StyledEditor = styled("div")<{
   a {
     color: ${(props) => props.theme.link};
     cursor: pointer;
+    text-decoration: none;
+    border-bottom: 1px solid ${(props) => props.theme.placeholder}
   }
 
   a:hover {
@@ -513,17 +515,8 @@ export const StyledEditor = styled("div")<{
   }
 
   a.link-atom {
-    text-decoration: underline;
-
-    ::before, ::after {
-      text-decoration: none;
-      color: ${(props) => props.theme.greyMid};
-    }
     ::before {
-      content: '[['
-    }
-    ::after {
-      content: ']]'
+      content: '⧉ '
     }
   }
   

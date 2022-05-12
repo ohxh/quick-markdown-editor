@@ -77,6 +77,9 @@ import TrailingNode from "./plugins/TrailingNode";
 import PasteHandler from "./plugins/PasteHandler";
 import { PluginSimple } from "markdown-it";
 import Emoji from "./plugins/Emoji";
+import LinkAtom from "./nodes/LinkAtom";
+import LinkAtomTrigger from "./plugins/LinkAtomTrigger";
+import LinkAtomMenu from "./components/LinkAtomMenu";
 
 export { schema, parser, serializer, renderToHtml } from "./server";
 
@@ -390,6 +393,20 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
             },
             onClose: () => {
               this.setState({ emojiMenuOpen: false });
+            },
+          }),
+          new LinkAtom(),
+          new LinkAtomTrigger({
+            onOpen: (search: string) => {
+              this.setState({
+                linkMenuOpen: true,
+                blockMenuOpen: false,
+                emojiMenuOpen: false,
+                blockMenuSearch: search,
+              });
+            },
+            onClose: () => {
+              this.setState({ linkMenuOpen: false });
             },
           }),
           new Placeholder({
@@ -772,7 +789,7 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
                   onCreateLink={this.props.onCreateLink}
                   tooltip={tooltip}
                 />
-                <LinkToolbar
+                {/* <LinkToolbar
                   view={this.view}
                   dictionary={dictionary}
                   isActive={this.state.linkMenuOpen}
@@ -782,7 +799,7 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
                   onShowToast={this.props.onShowToast}
                   onClose={this.handleCloseLinkMenu}
                   tooltip={tooltip}
-                />
+                /> */}
                 <EmojiMenu
                   view={this.view}
                   commands={this.commands}
@@ -806,6 +823,15 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
                   onImageUploadStop={this.props.onImageUploadStop}
                   onShowToast={this.props.onShowToast}
                   embeds={this.props.embeds}
+                />
+                <LinkAtomMenu
+                  view={this.view}
+                  commands={this.commands}
+                  dictionary={dictionary}
+                  rtl={isRTL}
+                  isActive={this.state.linkMenuOpen}
+                  search={this.state.blockMenuSearch}
+                  onClose={() => this.setState({ linkMenuOpen: false })}
                 />
               </React.Fragment>
             )}

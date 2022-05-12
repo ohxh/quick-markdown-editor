@@ -164,6 +164,7 @@ Persisted.args = {
 The contents of this editor are persisted to local storage on change (edit and reload)`,
   onChange: debounce(value => {
     const text = value();
+    console.warn(value);
     localStorage.setItem("saved", text);
   }, 250),
 };

@@ -10,7 +10,7 @@ export default class Blockquote extends Node {
 
   get schema() {
     return {
-      content: "block+",
+      content: "paragraph+",
       group: "block",
       defining: true,
       parseDOM: [{ tag: "blockquote" }],

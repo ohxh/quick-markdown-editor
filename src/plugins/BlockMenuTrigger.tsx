@@ -7,6 +7,7 @@ import { findParentNode } from "prosemirror-utils";
 import { PlusIcon } from "outline-icons";
 import { Decoration, DecorationSet } from "prosemirror-view";
 import Extension from "../lib/Extension";
+import isInBlockQuote from "../queries/isInBlockQuote";
 
 const MAX_MATCH = 500;
 const OPEN_REGEX = /^\/(\w+)?$/;
@@ -65,7 +66,7 @@ export default class BlockMenuTrigger extends Extension {
               setTimeout(() => {
                 const { pos } = view.state.selection.$from;
                 return run(view, pos, pos, OPEN_REGEX, (state, match) => {
-                  if (match) {
+                  if (match && !isInBlockQuote(view.state)) {
                     this.options.onOpen(match[1]);
                   } else {
                     this.options.onClose();
@@ -86,6 +87,7 @@ export default class BlockMenuTrigger extends Extension {
               const { pos } = view.state.selection.$from;
 
               return run(view, pos, pos, OPEN_REGEX, (state, match) => {
+                if (isInBlockQuote(view.state)) return null;
                 // just tell Prosemirror we handled it and not to do anything
                 return match ? true : null;
               });
@@ -161,7 +163,8 @@ export default class BlockMenuTrigger extends Extension {
         if (
           match &&
           state.selection.$from.parent.type.name === "paragraph" &&
-          !isInTable(state)
+          !isInTable(state) &&
+          !isInBlockQuote(state)
         ) {
           this.options.onOpen(match[1]);
         }
@@ -172,7 +175,7 @@ export default class BlockMenuTrigger extends Extension {
       // /<space>
       // /word<space>
       new InputRule(CLOSE_REGEX, (state, match) => {
-        if (match) {
+        if (match && !isInBlockQuote(state)) {
           this.options.onClose();
         }
         return null;

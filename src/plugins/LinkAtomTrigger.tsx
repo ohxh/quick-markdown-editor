@@ -4,7 +4,7 @@ import Extension from "../lib/Extension";
 import isInCode from "../queries/isInCode";
 import { run } from "./BlockMenuTrigger";
 
-const OPEN_REGEX = /(?:^|\s|\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])\[\[([0-9a-zA-Z_+-]+)?$/;
+const OPEN_REGEX = /\[\[$/;
 const CLOSE_REGEX = /(?:^|\s):(([0-9a-zA-Z_+-]*\s+)|(\s+[0-9a-zA-Z_+-]+)|[^0-9a-zA-Z_+-]+)$/;
 
 export default class LinkAtomTrigger extends Extension {
