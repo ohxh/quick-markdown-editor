@@ -118,22 +118,25 @@ export default class PasteHandler extends Extension {
                 .setSelection(
                   TextSelection.near(
                     tr.doc.resolve(
-                      tr.selection.$from.before() - (isLastLine ? 0 : 1)
-                    )
+                      tr.selection.$from.before() + (isLastLine ? 1 : 0)
+                    ),
+                    -1
                   )
                 )
                 .insertText(text);
 
+              alert(isLastLine);
+
               // Create paragraph and move cursor out of code block
-              tr = tr.insert(
-                tr.selection.$to.after(),
-                view.state.schema.nodes.paragraph.create()
-              );
-              tr = tr.setSelection(
-                TextSelection.near(
-                  tr.doc.resolve(tr.selection.$from.after() + 1)
-                )
-              );
+              // tr = tr.insert(
+              //   tr.selection.$to.after(),
+              //   view.state.schema.nodes.paragraph.create()
+              // );
+              // tr = tr.setSelection(
+              //   TextSelection.near(
+              //     tr.doc.resolve(tr.selection.$from.after() + 1)
+              //   )
+              // );
 
               view.dispatch(tr);
               return true;
@@ -143,6 +146,7 @@ export default class PasteHandler extends Extension {
             // compatability is to just use the HTML parser, regardless of
             // whether it "looks" like Markdown, see: outline/outline#2416
             if (html?.includes("data-pm-slice")) {
+              alert("Yoo");
               return false;
             }
 
